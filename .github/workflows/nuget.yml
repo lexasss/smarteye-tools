@@ -1,0 +1,42 @@
+name: Publish NuGet Package
+
+on:
+  workflow_dispatch:   # manual trigger
+  push:
+    tags:
+      - 'v*'           # publish on version tags
+env:
+  PROJECT_PATH: Client/SmartEyeTools.csproj
+  PACKAGE_PATH: ${{ github.workspace }}\packages
+  
+jobs:
+  publish:
+    runs-on: windows-latest
+
+    permissions:
+      id-token: write   # Required for GitHub's Trusted Publishing (OIDC)
+      contents: read    # To access the repository code
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Restore NuGet packages
+        run: dotnet restore ${{ env.PROJECT_PATH }}
+
+      - name: Build project
+        run: dotnet build ${{ env.PROJECT_PATH }} --no-restore --configuration Release
+
+      - name: Build and pack the project
+        run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --output ${{ env.PACKAGE_PATH }} # Create the nupkg
+
+      - name: List packages
+        run: ls ${{ env.PACKAGE_PATH }}\*.nupkg
+        
+      - name: Publish to NuGet
+        run: dotnet nuget push ${{ env.PACKAGE_PATH }}\*.nupkg -k ${{ secrets.NUGET_AUTH_TOKEN }} -s https://api.nuget.org/v3/index.json --skip-duplicate
