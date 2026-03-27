@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace SEClient.Tcp;
+namespace SmartEyeTools;
 
 public struct Point2D
 {

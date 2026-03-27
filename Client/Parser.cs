@@ -5,7 +5,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
 
-namespace SEClient.Tcp;
+namespace SmartEyeTools;
 
 internal static class Parser
 {

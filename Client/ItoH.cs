@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace SEClient.Tcp;
+namespace SmartEyeTools;
 
 /// <summary>
 /// Convenient byte-level manipulation of 16b integers,

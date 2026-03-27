@@ -2,7 +2,7 @@
 Console.WriteLine($@"Example: > .\TestTCP.exe 192.168.1.132");
 Console.WriteLine();
 
-using var tcpClient = new SEClient.Tcp.Client();
+using var tcpClient = new SmartEyeTools.Client();
 
 /*
 tcpClient.Sample += (s, e) =>
@@ -20,10 +20,10 @@ tcpClient.Sample += (s, e) =>
 };
 */
 
-tcpClient.Requested.Add(SEClient.Tcp.Data.Id.LeftPupilDiameter);
+tcpClient.Requested.Add(SmartEyeTools.Data.Id.LeftPupilDiameter);
 tcpClient.RequestAvailable += (s, e) =>
 {
-    object? pupilObj = e.GetValueOrDefault(SEClient.Tcp.Data.Id.LeftPupilDiameter);
+    object? pupilObj = e.GetValueOrDefault(SmartEyeTools.Data.Id.LeftPupilDiameter);
     if (pupilObj is double pupil)
     {
         Console.WriteLine($"Pupil = {pupil}");

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text.Json;
 
-namespace SEClient;
+namespace SmartEyeTools;
 
 public enum IntersectionSource
 {
