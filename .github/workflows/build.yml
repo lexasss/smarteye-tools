@@ -1,3 +1,11 @@
+name: Publish NuGet Package
+
+on:
+  workflow_dispatch:   # manual trigger
+  push:
+    tags:
+      - 'v*'           # optional: publish on version tags
+
 jobs:
   publish:
     runs-on: ubuntu-latest
