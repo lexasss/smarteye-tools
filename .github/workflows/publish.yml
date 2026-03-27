@@ -39,4 +39,4 @@ jobs:
         run: ls ${{ env.PACKAGE_PATH }}\*.nupkg
         
       - name: Publish to NuGet
-        run: dotnet nuget push ${{ env.PACKAGE_PATH }}\*.nupkg -k ${{ secrets.NUGET_AUTH_TOKEN }} -s https://api.nuget.org/v3/index.json --skip-duplicate
+        run: dotnet nuget push ${{ env.PACKAGE_PATH }}\*.nupkg -k ${{ secrets.GITHUB_TOKEN }} -s https://api.nuget.org/v3/index.json --skip-duplicate
