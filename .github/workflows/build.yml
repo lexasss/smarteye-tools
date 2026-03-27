@@ -24,6 +24,4 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Publish to NuGet
-        run: dotnet nuget push .github/packages/*.nupkg \
-          --source https://api.nuget.org/v3/index.json \
-          --skip-duplicate
+        run: dotnet nuget push .github/packages/*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate
