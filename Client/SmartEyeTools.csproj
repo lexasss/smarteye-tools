@@ -9,7 +9,7 @@
     <Version>1.0.0</Version>
     <Description>TCP client for receving data from SmartEye gaze tracker in .NET applications</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/lexasss/se-client</RepositoryUrl>
+    <RepositoryUrl>https://github.com/lexasss/smarteye-tools</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <IncludeSymbols>true</IncludeSymbols>
