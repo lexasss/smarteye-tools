@@ -4,24 +4,32 @@ on:
   workflow_dispatch:   # manual trigger
   push:
     tags:
-      - 'v*'           # optional: publish on version tags
+      - 'v*'           # publish on version tags
 
 jobs:
   publish:
     runs-on: ubuntu-latest
 
     permissions:
-      id-token: write   # REQUIRED for trusted publishing
-      contents: read
+      id-token: write   # Required for GitHub's Trusted Publishing (OIDC)
+      contents: read    # To access the repository code
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4  # Checkout repository code
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 8.0.x   # Sets the project .NET version
 
+      - name: Restore NuGet packages
+        run: dotnet restore  # Restore any NuGet dependencies for the project
+
+      - name: Build and pack the project
+        run: dotnet pack --configuration Release --output .github/packages # Create the nupkg
+        
       - name: Publish to NuGet
-        run: dotnet nuget push .github/packages/*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate
+        run: |
+          ls .github/packages/*.nupkg
+          dotnet nuget push .github/packages/*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate
