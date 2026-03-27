@@ -32,4 +32,4 @@ jobs:
       - name: Publish to NuGet
         run: |
           ls .github/packages/*.nupkg
-          dotnet nuget push .github/packages/*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate
+          dotnet nuget push .github/packages/*.nupkg --source https://api.nuget.org/v3/index.json --skip-duplicate --api-key ${{secrets.GITHUB_TOKEN}}
