@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
-using System.Printing;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -92,7 +91,7 @@ public class Client : IDisposable
         var planes = new List<String>();
         foreach (var planName in planeNames)
         {
-            planes.Add(new String() { Ptr = planName.Split().Select(s => s[0]).ToArray(), Size = (ushort)planName.Length });
+            planes.Add(new String() { Ptr = planName.ToCharArray(), Size = (ushort)planName.Length });
         }
         EmulatedPlanes = planes.ToArray();
     }
