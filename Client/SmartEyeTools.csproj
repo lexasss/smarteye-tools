@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <Authors>Oleg Špakov</Authors>
     <Company>Tampere University</Company>
-    <PackageId>TampereUniversity.OlegSpakov.SmartEyeClient</PackageId>
+    <PackageId>Tuni.SmartEyeTools</PackageId>
     <Version>1.0.1</Version>
     <Description>TCP client for receving data from SmartEye gaze tracker in .NET applications</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
